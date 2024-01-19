@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-BigDataSystems</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class="main-login">
+        <div class="left-login">    
+            <h1>Monitoração Transações <br>Web Flexpag</h1>
+            <br> <br> <br>
+            <video src="{{ url_for('static', filename='videos/Novo projeto.mp4') }}" class="left-login-img" alt="Animação" autoplay muted loop></video>
+        </div>
+        <div class="right-login">
+            <div class="card-login">
+                <h1>LOGIN</h1>
+                    <form onsubmit="logar(); return false;"> 
+                        <div class="textfield">
+                            <label for="usuario">Usuário</label>
+                            <input type="text" placeholder="Login" id="login">
+                        </div>
+                        <div class="textfield"> 
+                            <label for="senha">Senha</label>
+                            <input type="password" placeholder="senha" id="senha">
+                            <br>
+                            <button class="btn-login" onclick="logar(); return false;">LOGIN</button>
+                        </div>
+                    </form> 
+            </div>
+        </div>
+    </div>
+    <script>
+        function logar(){
+            var login = document.getElementById('login').value;
+            var senha = document.getElementById('senha').value;
+
+            // Envia os dados para o servidor
+            fetch('/autenticar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ login, senha })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.autenticado) {
+                    location.href = "home";
+                } else {
+                    alert("Usuário ou senha incorretos");
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao autenticar:', error);
+            });
+        }
+    </script>
+</body>
+</html>
