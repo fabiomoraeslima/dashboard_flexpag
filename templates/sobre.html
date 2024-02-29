@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+</nav>
+    <section class="py-0" id="home">
+      <div class="bg-holder d-none d-lg-block backuground_img">
+        </div>
+        <!--/.bg-holder-->
+        <div class="bg-holder d-lg-none backuground_img2">
+        </div>
+        <!--/.bg-holder-->
+        <div class="container">
+          <div class="image-container" 
+          style="text-align:right;
+                text-align: center; /* Centraliza o conteúdo dentro do elemento pai */ 
+                collor:black;                      
+                margin-top:30px; 
+                float: right;
+                position: absolute;
+                right: -90px;">
+      <img  src="{{ url_for('static', filename='img/icons/user.png')}}" alt="Minha Imagem" 
+          style="width: 40px; height: auto;"> 
+      <p>{{user}}</p>
+  
+  </div>
+            <div class="row align-items-center min-vh-100">
+              <div class="col-md-7 col-lg-6 py-6 text-md-start text-center">
+                <h1> Transações WEB</h1><br> 
+                <h3>Regras Principais:</h3>
+                <p class="lead text-muted">
+                  <ul id="navegacao">
+                      <li>Transações do <strong>Canal WEB</strong></li>
+                      <li>Transações realizadas com sucesso <strong>(status=2)</strong></li>
+                      <li>Todos os clientes que realizaram pelo menos uma transação nos ultimos 30 dias</li>
+                      <li>Trashold's definidos por Grupo de clientes:</li>
+                        <ul style="margin-top: 10px;">
+                          <li class="expansivel" onclick="toggleSublista(this)">
+                            <span id="seta"></span>Grupo A: Alertar depois de <strong>60 minutos</strong>
+                            <ul class="sublista">
+                              <li>ENEL SP</li>
+                              <li>LIGHT</li>
+                              <li>COELBA</li>
+                              <li>CELPE</li>
+                              <li>COSERN</li>
+                            </ul>
+                          </li>
+                          <li class="expansivel" onclick="toggleSublista(this)">
+                            <span id="seta"></span>Grupo B: Alertar depois de <strong>120 minutos</strong> 
+                            <ul class="sublista">
+                              <li>EMBASA</li>
+                              <li>CAERN</li>
+                              <li>ENEL CE</li>
+                              <li>ELEKTRO</li>
+                              <li>ENEL RJ</li>
+                            </ul>
+                          </li>
+                          <li>Demais Clientes: Alertar depois de <strong>18 horas</strong></li>
+                          <li>Clientes <strong>BRK</strong>, a princípio não serão monitorados. </li>
+                        </ul>
+                      </ul>     
+                    </p>
+                <p><i> Observação.: O dashboard foi criado com base nas transações gravadas no banco utilities.</i></p>
+                    <div>
+                      <h3>Procedimentos Noc:</h3>
+                      <p class="lead text-muted">
+                        <ul>
+                          <li>Quando todos os clientes de um mesmo grupo estiverem sem transacionar:</li>
+                            <ul>
+                              <li>Reiniciar a aplicação;</li>
+                              <li>Enviar notificação de incidente para o cliente(email, sms e Grupo WhatsApp).</li>
+                            </ul>
+                          <li>Quando somente um dos clientes do grupo estiver sem transacionar:</li>
+                            <ul>
+                              <li>Enviar notificação de incidente para o cliente(email, sms e Grupo WhatsApp).</li>
+                            </ul>
+                        </ul>
+                    </div>
+              </div>
+            </div>
+        </div>
+    </section>
+    {{usuario}}
+</main>
+<script>
+  function toggleSublista(elemento) {
+      // Encontra a sub-lista associada ao item clicado
+      var sublista = elemento.querySelector('.sublista');
+
+      // Inverte a visibilidade da sub-lista
+      if (sublista.style.display === 'none') {
+          sublista.style.display = 'block';
+      } else {
+          sublista.style.display = 'none';
+      }
+  }
+</script>
+        {% endblock conteudo %}

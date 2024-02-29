@@ -1,0 +1,21 @@
+.sublista {
+    display: none; /* Inicialmente oculta */
+    list-style-type: disc;
+    margin-left: 40px;
+    margin-top: 5px;
+  }
+  .expansivel {
+    content: '\25B6';
+    cursor: pointer;
+    list-style-type: none;
+    margin-bottom: 10px;
+  }
+  .expansivel:before {
+    content: '\27AA'; /* Adiciona um símbolo de seta para indicar expansibilidade */
+    margin-right: 10px;
+    color: #333; /* Cor da seta */
+  }
+  .expansivel.expandido:before {
+   
+    content: '\2195'; /* Altera o símbolo para baixo quando a lista está expandida */
+  }

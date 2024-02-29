@@ -1,0 +1,53 @@
+    table {
+        background-color: #fffcfc;
+        border-collapse: collapse;
+        width: 100%;
+           }
+    .light {
+    	display: flex;
+    	align-items: center;
+    	color: transparent;
+    		}
+    .light .light-dot {
+    	width: 25px;
+    	height: 25px;
+    	border-radius: 50%;
+        
+    		}
+    .green-light .light-dot {
+    	background-color: green;
+    		}
+    .red-light .light-dot {
+    	background-color: red;
+    		}
+    .light .farol-text {
+    	position: absolute;           
+    		}
+    .backuground_img {
+        background-image: url('../img/illustrations/1-1.png');
+        background-position:right top;
+        background-size:contain;
+            }
+    .backuground_img2 {
+        background-image:url('../img/illustrations/1-1.png');
+        background-position:left top;
+        background-size:cover;
+    }
+    .custom-btn-sm {
+        font-size: 0.9em; /* Tamanho de fonte personalizado */
+        padding: 1px 10px; /* Espaçamento interno personalizado */
+    }
+	th, td {
+  		max-width: 100%;
+  		overflow: hidden;
+  		text-overflow: ellipsis; /* Adiciona reticências (...) para texto que ultrapassa a largura máxima */
+  		white-space: nowrap; /* Evita que o texto quebre em várias linhas */
+}
+	.rodape {
+	      background-color: #333; /* Cor de fundo do rodapé */
+	      color: #fff; /* Cor do texto do rodapé */
+	      text-align: center;
+	      bottom: 0;
+	      width: 100%;
+		  line-height: 2em;
+	}
